@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<div class="alert alert-primary" role="alert">
+    You have {{ data | length }} note{% if data | length != 1 %}s{% endif %}
+  </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Snippet</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Last update</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for row in data %}
+    <tr>
+      <th scope="row"><a href={{ url_for('write', id=row[0]) }}>{{row[1]}}</a></th>
+      <td>{{ row[2] | trim | truncate(50) }} </td>
+      <td>{{ row[3] }}</td>
+      <td>{{ row[4] | humanize_ts }}</td>
+      <td>
+          <form action="{{ url_for('delete', id=row[0]) }}" method="post">
+            <button type="submit" class="btn btn-danger">Delete</button></td>
+          </form>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+
+
+

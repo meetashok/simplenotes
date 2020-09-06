@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <form action="{% if data %} {{ url_for('write', id=data[0]) }} {% else %} {{ url_for('write') }} {% endif %}" method="post">
+        <div class="form-group">
+          <!-- <label for="exampleInputEmail1">Note Title</label> -->
+          <input class="form-control" name="title" style="width: 100%;" value="{% if data %} {{ data[2] }} {% endif %}">
+        </div>
+        <div class="input-group">
+            <textarea class="form-control" aria-label="With textarea" name="body" style="height:4in;">
+                {% if data %}
+                    {{ data[3] | trim }}
+                {% endif %}
+            </textarea>
+          </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+{% endblock %}
