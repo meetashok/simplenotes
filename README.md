@@ -1,4 +1,5 @@
 # Simple Notes 📝
+<hr>
 
 This is a simple note taking web-based app. This was built for fulfiling the final project requirements for [CS50](https://cs50.harvard.edu/). This app has the following features: 
 
