@@ -6,7 +6,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
-from helpers import apology, login_required, lookup, usd, humanize_ts
+from helpers import apology, login_required, humanize_ts
 from datetime import datetime
 
 # Configure application
@@ -24,7 +24,6 @@ def after_request(response):
     return response
 
 # Custom filter
-app.jinja_env.filters["usd"] = usd
 app.jinja_env.filters["humanize_ts"] = humanize_ts
 
 # Configure session to use filesystem (instead of signed cookies)
